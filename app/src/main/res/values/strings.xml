@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">HealthCart</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="update_btn">Update Info</string>
+    <string name="select_btn">Select Food</string>
+    <string name="personal_info" />
+    <string name="age_str">Age</string>
+    <string name="height_str">Height</string>
+    <string name="weight_str">Weight</string>
+    <string name="weight_hint">70kg</string>
+    <string name="height_hint">170cm</string>
+    <string name="age_hint">20</string>
+    <string name="weight_info">Weight</string>
+    <string name="height_info">Height</string>
+    <string name="age_info">Age</string>
+    <string name="calorie_info">Calorie</string>
+    <string name="food_list_title">Your Eating List Today</string>
+    <string name="reselect_btn">Reselect</string>
+    <string name="finish_btn">Finish</string>
+    <string name="capture_items">Continue</string>
+    <string name="summary_title">Check Out Your Eating List!</string>
+    <string name="return_to_root">Return to menu</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="confirm_btn">Confirm</string>
+    <string name="return_for_detail">Return to Home Page</string>
+    <string-array name="height_units">
+        <item>cm</item>
+        <item>inch</item>
+    </string-array>
+    <string-array name="weight_units">
+        <item>kg</item>
+        <item>lbs</item>
+    </string-array>
+</resources>

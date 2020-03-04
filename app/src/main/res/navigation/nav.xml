@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav"
+    app:startDestination="@id/home">
+
+    <fragment
+        android:id="@+id/home"
+        android:name="com.example.healthcart.Home"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_update"
+            app:destination="@id/update" />
+        <action
+            android:id="@+id/action_home_to_select"
+            app:destination="@id/select" />
+        <action
+            android:id="@+id/action_home_to_detail"
+            app:destination="@id/detail" />
+    </fragment>
+    <fragment
+        android:id="@+id/update"
+        android:name="com.example.healthcart.Update"
+        android:label="fragment_update"
+        tools:layout="@layout/fragment_update" >
+        <action
+            android:id="@+id/action_update_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/list"
+        android:name="com.example.healthcart.List"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_list_to_select"
+            app:destination="@id/select" />
+        <action
+            android:id="@+id/action_list_to_home"
+            app:destination="@id/home" />
+    </fragment>
+    <fragment
+        android:id="@+id/select"
+        android:name="com.example.healthcart.Select"
+        android:label="fragment_select"
+        tools:layout="@layout/fragment_select">
+        <action
+            android:id="@+id/action_select_to_list"
+            app:destination="@id/list" />
+    </fragment>
+    <fragment
+        android:id="@+id/detail"
+        android:name="com.example.healthcart.Detail"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+</navigation>

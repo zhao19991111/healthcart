@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Home">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <Button
+        android:id="@+id/select"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:text="@string/select_btn"
+        android:textSize="@dimen/btn_textsize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/food_list"
+        app:layout_constraintTop_toBottomOf="@+id/food_list" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:text="@string/update_btn"
+        android:textSize="@dimen/btn_textsize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/food_list"
+        app:layout_constraintTop_toBottomOf="@+id/food_list" />
+
+    <ScrollView
+        android:id="@+id/food_list"
+        android:layout_width="@dimen/list_width"
+        android:layout_height="@dimen/list_height"
+        android:background="@android:color/holo_blue_light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="@dimen/avatar_width"
+        android:layout_height="@dimen/avatar_height"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/holo_blue_light"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars[1]" />
+
+    <TextView
+        android:id="@+id/weight_info"
+        android:layout_width="@dimen/inputbox_width"
+        android:layout_height="@dimen/info_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        android:text="@string/weight_info"
+        android:textAlignment="center"
+        android:textSize="@dimen/info_textsize"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="@+id/imageView" />
+
+    <TextView
+        android:id="@+id/height_info"
+        android:layout_width="@dimen/info_width"
+        android:layout_height="@dimen/info_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        android:text="@string/height_info"
+        android:textAlignment="center"
+        android:textSize="@dimen/info_textsize"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/weight_info" />
+
+    <TextView
+        android:id="@+id/age_info"
+        android:layout_width="@dimen/info_width"
+        android:layout_height="@dimen/info_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        android:text="@string/age_info"
+        android:textAlignment="center"
+        android:textSize="@dimen/info_textsize"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/height_info" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="@dimen/title_width"
+        android:layout_height="@dimen/info_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        android:text="@string/food_list_title"
+        android:textSize="@dimen/label_textsize"
+        app:layout_constraintBottom_toTopOf="@+id/food_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

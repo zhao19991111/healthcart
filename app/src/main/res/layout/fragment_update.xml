@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Update">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        android:id="@+id/height"
+        android:layout_width="@dimen/inputbox_width"
+        android:layout_height="@dimen/inputbox_height"
+        android:ems="10"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="@dimen/label_textsize"
+        app:layout_constraintBottom_toTopOf="@+id/weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/weight"
+        android:layout_width="@dimen/inputbox_width"
+        android:layout_height="@dimen/inputbox_height"
+        android:ems="10"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="@dimen/label_textsize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="@dimen/inputbox_width"
+        android:layout_height="@dimen/inputbox_height"
+        android:ems="10"
+        android:foregroundGravity="center"
+        android:gravity="center"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="@dimen/label_textsize"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weight" />
+
+    <Button
+        android:id="@+id/update_info"
+        android:layout_width="@dimen/btn_width"
+        android:layout_height="@dimen/btn_height"
+        android:text="@string/update_btn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age" />
+
+    <TextView
+        android:id="@+id/height_text"
+        android:layout_width="@dimen/inputbox_width"
+        android:layout_height="@dimen/inputbox_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        android:text="@string/height_str"
+        android:textAlignment="center"
+        android:textSize="@dimen/label_textsize"
+        app:layout_constraintBottom_toTopOf="@+id/height"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/weight_text"
+        android:layout_width="@dimen/inputbox_width"
+        android:layout_height="@dimen/inputbox_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        android:text="@string/weight_str"
+        android:textAlignment="center"
+        android:textSize="@dimen/label_textsize"
+        app:layout_constraintBottom_toTopOf="@+id/weight"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/age_text"
+        android:layout_width="@dimen/inputbox_width"
+        android:layout_height="@dimen/inputbox_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        android:text="@string/age_str"
+        android:textAlignment="center"
+        android:textSize="@dimen/label_textsize"
+        app:layout_constraintBottom_toTopOf="@+id/age"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="@dimen/spinner_height"
+        android:layout_height="@dimen/spinner_width"
+        android:entries="@array/weight_units"
+        app:layout_constraintStart_toEndOf="@+id/height"
+        app:layout_constraintTop_toTopOf="@+id/height" />
+
+    <Spinner
+        android:id="@+id/spinner2"
+        android:layout_width="@dimen/spinner_height"
+        android:layout_height="@dimen/spinner_width"
+        android:entries="@array/weight_units"
+        app:layout_constraintStart_toEndOf="@+id/weight"
+        app:layout_constraintTop_toTopOf="@+id/weight" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
