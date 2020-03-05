@@ -16,6 +16,7 @@ import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.fragment.findNavController
 import java.util.*
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.fragment_select.*
@@ -35,13 +36,13 @@ class Select : Fragment() {
     ): View? {
         super.onCreate(savedInstanceState)
         // Inflate the layout for this fragment
+        val bundle = Bundle()
         val view = inflater.inflate(R.layout.fragment_select, container, false)
         // Navigation of buttons
         val recordBtn = view.findViewById<Button>(R.id.record)
         val returnBtn = view.findViewById<Button>(R.id.return_btn)
         val confirmBtn = view.findViewById<Button>(R.id.confirm_btn)
         val cancelBtn = view.findViewById<Button>(R.id.cancel_btn)
-        val navigateToList = Navigation.createNavigateOnClickListener(R.id.action_select_to_list)
         val popupBox = view.findViewById<ConstraintLayout>(R.id.popup_block)
         // Open the ucla dining website
         val dining_website: WebView = view.findViewById(R.id.ucla_dining)
@@ -134,7 +135,12 @@ class Select : Fragment() {
                                                 run {
                                                     saveStrListToDB(food_list, "food_list")
                                                     saveStrList2ToDB(data_list, "data_list")
-                                                    navigateToList
+                                                    findNavController().navigate(
+                                                        SelectDirections.actionSelectToList(
+                                                            arrayToString(food_list),
+                                                            array2ToString(data_list)
+                                                        )
+                                                    )
                                                 }
                                             }
                                             food_list.forEachIndexed { ind, ele
@@ -238,6 +244,55 @@ class Select : Fragment() {
             putString(key, json)
             commit()
         }
+    }
+
+    private fun arrayToString (arrList: ArrayList<String>): String
+    {
+        var finalStr: String = ""
+        arrList.forEach {
+            ele -> run {
+                finalStr += (ele + " | ")
+            }
+        }
+        return finalStr
+
+    }
+
+    private fun stringToArray (str: String): ArrayList<String>
+    {
+        var finalArr: ArrayList<String> = arrayListOf()
+        var tempList = str.split(" | ")
+        tempList.forEach{
+            ele -> run {
+                if (ele != "")
+                   finalArr.add(ele)
+            }
+        }
+        return finalArr
+    }
+
+    private fun array2ToString (arrList: ArrayList<ArrayList<String>>): String
+    {
+        var finalStr: String = ""
+        arrList.forEach{
+            ele -> run {
+            finalStr += (arrayToString(ele) + " ## ")
+           }
+        }
+        return finalStr
+    }
+
+    private fun stringToArray2 (str: String): ArrayList<ArrayList<String>> {
+        var finalArr: ArrayList<ArrayList<String>> = arrayListOf<ArrayList<String>>()
+        var tempList = str.split(" ## ")
+        tempList.forEach{
+            ele -> run {
+                if (ele != "") {
+                    finalArr.add(stringToArray(ele))
+                }
+            }
+        }
+        return finalArr
     }
 
 

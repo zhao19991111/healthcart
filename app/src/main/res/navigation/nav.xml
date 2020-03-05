@@ -40,6 +40,12 @@
         <action
             android:id="@+id/action_list_to_home"
             app:destination="@id/home" />
+        <argument
+            android:name="food_str"
+            app:argType="string" />
+        <argument
+            android:name="data_str"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/select"
