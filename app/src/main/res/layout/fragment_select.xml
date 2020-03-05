@@ -44,11 +44,12 @@
         android:layout_width="@dimen/popup_width"
         android:layout_height="@dimen/popup_height"
         android:background="@android:color/holo_blue_light"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/record"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/ucla_dining"
-        app:layout_constraintTop_toTopOf="@+id/ucla_dining">
+        app:layout_constraintTop_toTopOf="@+id/ucla_dining"
+        tools:visibility="invisible">
 
         <Button
             android:id="@+id/cancel_btn"
@@ -65,6 +66,284 @@
             android:text="@string/confirm_btn"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+        <ScrollView
+            android:id="@+id/summary_list"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/linear_view_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+        </ScrollView>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/linear_view_height"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible">
+
+            <TableRow
+                android:id="@+id/row0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry0"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name0"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn0"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry1"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn1"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete"
+                    tools:visibility="visible" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry2"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn2"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete"
+                    tools:visibility="visible" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry3"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn3"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete"
+                    tools:visibility="visible" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry4"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn4"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete"
+                    tools:visibility="visible" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry5"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn5"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete"
+                    tools:visibility="visible" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry6"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn6"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete"
+                    tools:visibility="visible" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry7"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn7"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete"
+                    tools:visibility="visible" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/row8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_orange_light"
+                tools:visibility="gone">
+
+                <HorizontalScrollView
+                    android:id="@+id/h_entry8"
+                    android:layout_width="@dimen/item_row_length"
+                    android:layout_height="@dimen/linear_row_height"
+                    android:layout_gravity="center">
+
+                    <TextView
+                        android:id="@+id/food_name8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:textSize="@dimen/info_textsize" />
+                </HorizontalScrollView>
+
+                <Button
+                    android:id="@+id/cancel_btn8"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="match_parent"
+                    android:background="@android:drawable/ic_delete"
+                    tools:visibility="visible" />
+
+            </TableRow>
+        </TableLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

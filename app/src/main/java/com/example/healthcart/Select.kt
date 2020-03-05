@@ -1,8 +1,8 @@
 package com.example.healthcart
 
 
+import android.content.Context
 import android.os.Bundle
-import android.os.CountDownTimer
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,26 +12,28 @@ import android.webkit.WebView
 import android.widget.Button
 import androidx.navigation.Navigation
 import android.webkit.WebViewClient
-import android.webkit.JavascriptInterface
-import android.webkit.ValueCallback
-import android.widget.LinearLayout
+import android.widget.TableRow
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import java.util.concurrent.CountDownLatch
-import kotlinx.coroutines.*
+import java.util.*
+import com.google.gson.Gson
+import kotlinx.android.synthetic.main.fragment_select.*
+
 
 /**
  * A simple [Fragment] subclass.
  */
 class Select : Fragment() {
 
-    val food_list = arrayListOf<String> ()
-    val data_list = arrayListOf<ArrayList<String>> ()
+    private val food_list = arrayListOf<String> ()
+    private val data_list = arrayListOf<ArrayList<String>> ()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        super.onCreate(savedInstanceState)
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_select, container, false)
         // Navigation of buttons
@@ -43,10 +45,16 @@ class Select : Fragment() {
         val popupBox = view.findViewById<ConstraintLayout>(R.id.popup_block)
         // Open the ucla dining website
         val dining_website: WebView = view.findViewById(R.id.ucla_dining)
+        val entry_list = arrayOf(R.id.food_name0, R.id.food_name1, R.id.food_name2, R.id.food_name3, R.id.food_name4, R.id.food_name5, R.id.food_name6, R.id.food_name7, R.id.food_name8)
+        val button_list = arrayOf(R.id.cancel_btn0, R.id.cancel_btn1, R.id.cancel_btn2, R.id.cancel_btn3, R.id.cancel_btn4, R.id.cancel_btn5, R.id.cancel_btn6, R.id.cancel_btn7, R.id.cancel_btn8)
+        val row_list = arrayOf(R.id.row0, R.id.row1, R.id.row2, R.id.row3, R.id.row4, R.id.row5, R.id.row6, R.id.row7, R.id.row8)
         dining_website.settings.javaScriptEnabled = true
         dining_website.loadUrl("http://menu.dining.ucla.edu/Menus")
         // Go back to the menu website if returned
-        returnBtn.setOnClickListener { dining_website.loadUrl("http://menu.dining.ucla.edu/Menus") }
+        returnBtn.setOnClickListener {
+            popupBox.visibility = View.INVISIBLE
+            dining_website.loadUrl("http://menu.dining.ucla.edu/Menus")
+        }
         dining_website.setWebViewClient(object : WebViewClient() {
             override fun shouldOverrideUrlLoading(view: WebView, url:String): Boolean {
                 view.loadUrl(url)
@@ -88,41 +96,107 @@ class Select : Fragment() {
                 }
                 else
                 {
-                    dining_website.evaluateJavascript("(function() {document.getElementById(\"showdetail\").click()})()") { value ->
-                        run {
-                            dining_website.evaluateJavascript("(function() {"
-                                                                    +" var items = document.getElementsByClassName(\"rpt-item\") \n"
-                                                                    +" var data = document.getElementsByClassName(\"rpt-data\") \n"
-                                                                    +" var return_arr = []\n"
-                                                                    +" for (let i=0; i<items.length; i++)\n"
-                                                                    +" {  return_arr.push(items[i].innerHTML) \n"
-                                                                    +"    for (let j=0; j<6; j++) \n"
-                                                                    +"    { return_arr.push(data[j+i*7].innerHTML) } \n"
-                                                                    +" } return return_arr\n"
-                                                                    +"})()") { value ->
-                                run {
-                                    Log.e("Result", value)
-                                    processValue(value)
+                        dining_website.evaluateJavascript("(function() {document.getElementById(\"showdetail\").click()})()") { value ->
+                            run {
+                                dining_website.evaluateJavascript(
+                                    "(function() {"
+                                            + " var items = document.getElementsByClassName(\"rpt-item\") \n"
+                                            + " var data = document.getElementsByClassName(\"rpt-data\") \n"
+                                            + " var return_arr = []\n"
+                                            + " for (let i=0; i<items.length; i++)\n"
+                                            + " {  return_arr.push(items[i].innerHTML) \n"
+                                            + "    for (let j=0; j<6; j++) \n"
+                                            + "    { return_arr.push(data[j+i*7].innerHTML) } \n"
+                                            + " } return return_arr\n"
+                                            + "})()"
+                                ) { value ->
+                                    run {
+                                        Log.e("Result", value)
+                                        recordBtn.visibility = View.INVISIBLE
+                                        processValue(value)
+                                        if (food_list.size > 9) // too many items selected
+                                            Toast.makeText(
+                                                getActivity(),
+                                                "Please choose less than 9 items",
+                                                Toast.LENGTH_LONG
+                                            ).show()
+                                        else {
+                                            popupBox.visibility = View.VISIBLE
+                                            entry_list.forEachIndexed { index, element ->
+                                                view.findViewById<TableRow>(row_list[index])
+                                                    .visibility = View.INVISIBLE
+                                            }
+                                            cancelBtn.setOnClickListener {
+                                                popupBox.visibility = View.INVISIBLE
+                                                recordBtn.visibility = View.VISIBLE
+                                            }
+                                            confirmBtn.setOnClickListener {
+                                                run {
+                                                    saveStrListToDB(food_list, "food_list")
+                                                    saveStrList2ToDB(data_list, "data_list")
+                                                    navigateToList
+                                                }
+                                            }
+                                            food_list.forEachIndexed { ind, ele
+                                                ->
+                                                run {
+                                                    view.findViewById<TextView>(entry_list[ind])
+                                                        .text = ele
+                                                    view.findViewById<TableRow>(row_list[ind])
+                                                        .visibility = View.VISIBLE
+                                                    // update (delete a food item)
+                                                    view.findViewById<Button>(button_list[ind])
+                                                        .setOnClickListener {
+                                                            view.findViewById<TableRow>(row_list[ind])
+                                                                .visibility = View.GONE
+                                                            val temp_food_list =
+                                                                arrayListOf<String>()
+                                                            val temp_data_list =
+                                                                arrayListOf<ArrayList<String>>()
+                                                            food_list.forEachIndexed { i, e ->
+                                                                run {
+                                                                    if (i != ind) {
+                                                                        temp_food_list.add(food_list[i])
+                                                                        temp_data_list.add(data_list[i])
+                                                                    }
+                                                                }
+                                                            }
+                                                            Collections.copy(
+                                                                food_list,
+                                                                temp_food_list
+                                                            )
+                                                            Collections.copy(
+                                                                data_list,
+                                                                temp_data_list
+                                                            )
+                                                        }
+
+                                                }
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-
                 }
-            {
-
             }
-            }
-
         }
-        cancelBtn.setOnClickListener { popupBox.visibility = View.GONE  }
-        confirmBtn.setOnClickListener { navigateToList }
         return view
     }
 
-    fun processValue(value: String): Unit
+    private fun processValue(value: String): Unit
     {
-        val summary_list: kotlin.collections.List<String> = value.replace("[", "").replace("]", "").replace("\"","").split(",").map{it.trim()}
+        food_list.clear()
+        data_list.clear()
+        val pre_list: kotlin.collections.List<String> = value.replace("[", "").replace("&amp;", "&")
+            .replace("]", "").split("\",\"").map{it.trim()}
+        val summary_list = arrayListOf<String>()
+        pre_list.forEach {
+            ele -> run {
+              if (ele != "," && ele != "")
+                  summary_list.add(ele.replace("\""," ").trim())
+            }
+        }
         for (i in 0..(summary_list.size / 7))
         {
             data_list.add(arrayListOf<String>())
@@ -144,6 +218,27 @@ class Select : Fragment() {
         }
     }
 
+    private fun saveStrListToDB(arrList: ArrayList<String>, key: String): Unit
+    {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val gson = Gson()
+        val json = gson.toJson(arrList)
+        with (sharedPref.edit()) {
+            putString(key, json)
+            commit()
+        }
+    }
+
+    private fun saveStrList2ToDB(arrList: ArrayList<ArrayList<String>>, key: String): Unit
+    {
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val gson = Gson()
+        val json = gson.toJson(arrList)
+        with (sharedPref.edit()) {
+            putString(key, json)
+            commit()
+        }
+    }
 
 
 

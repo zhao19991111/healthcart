@@ -23,5 +23,9 @@
     <dimen name="popup_width">300dp</dimen>
     <dimen name="popup_height">500dp</dimen>
     <dimen name="detail_list_height">600dp</dimen>
+    <dimen name="table_row_height">50dp</dimen>
+    <dimen name="linear_view_height">450dp</dimen>
+    <dimen name="linear_row_height">50dp</dimen>
+    <dimen name="item_row_length">250dp</dimen>
     <item name="web_width" type="dimen">360dp</item>
 </resources>

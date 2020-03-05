@@ -109,6 +109,7 @@
         android:layout_width="@dimen/spinner_height"
         android:layout_height="@dimen/spinner_width"
         android:entries="@array/weight_units"
+        android:spinnerMode="dropdown"
         app:layout_constraintStart_toEndOf="@+id/height"
         app:layout_constraintTop_toTopOf="@+id/height" />
 
@@ -117,6 +118,7 @@
         android:layout_width="@dimen/spinner_height"
         android:layout_height="@dimen/spinner_width"
         android:entries="@array/weight_units"
+        android:spinnerMode="dropdown"
         app:layout_constraintStart_toEndOf="@+id/weight"
         app:layout_constraintTop_toTopOf="@+id/weight" />
 
