@@ -25,6 +25,17 @@
     <string name="cancel_btn">Cancel</string>
     <string name="confirm_btn">Confirm</string>
     <string name="return_for_detail">Return to Home Page</string>
+    <string name="col_title0">Item Name</string>
+    <string name="col_title1">Calories</string>
+    <string name="col_title2">Details</string>
+    <string name="expand_str">Expand</string>
+    <string name="calories_str">Calories</string>
+    <string name="fats_str">Fats</string>
+    <string name="protein_str">Protein</string>
+    <string name="carb_str">Carbohydrates</string>
+    <string name="detail_title">Summary</string>
+    <string name="return_str">Return</string>
+    <string name="clear_str">Clear</string>
     <string-array name="height_units">
         <item>cm</item>
         <item>inch</item>

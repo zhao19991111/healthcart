@@ -60,5 +60,9 @@
         android:id="@+id/detail"
         android:name="com.example.healthcart.Detail"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detail_to_home"
+            app:destination="@id/home" />
+    </fragment>
 </navigation>

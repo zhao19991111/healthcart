@@ -17,8 +17,8 @@
         android:text="@string/select_btn"
         android:textSize="@dimen/btn_textsize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/food_list"
-        app:layout_constraintTop_toBottomOf="@+id/food_list" />
+        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <Button
         android:id="@+id/update"
@@ -27,19 +27,51 @@
         android:text="@string/update_btn"
         android:textSize="@dimen/btn_textsize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/food_list"
-        app:layout_constraintTop_toBottomOf="@+id/food_list" />
+        app:layout_constraintStart_toStartOf="@+id/scrollView2"
+        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
     <ScrollView
-        android:id="@+id/food_list"
+        android:id="@+id/scrollView2"
         android:layout_width="@dimen/list_width"
         android:layout_height="@dimen/list_height"
-        android:background="@android:color/holo_blue_light"
+        android:background="@color/text_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView">
+
+        <TableLayout
+            android:id="@+id/_food_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_light">
+
+            <TableRow
+                android:id="@+id/row"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/title_1"
+                    android:layout_width="@dimen/detail_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="@string/col_title0"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/title_2"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="@string/calories_str"
+                    android:textSize="@dimen/info_textsize" />
+            </TableRow>
+
+        </TableLayout>
+    </ScrollView>
 
     <ImageView
         android:id="@+id/imageView"
@@ -47,7 +79,7 @@
         android:layout_height="@dimen/avatar_height"
         android:layout_marginTop="20dp"
         android:background="@android:color/holo_blue_light"
-        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintStart_toStartOf="@+id/progress_title"
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars[1]" />
 
@@ -60,7 +92,7 @@
         android:text="@string/weight_info"
         android:textAlignment="center"
         android:textSize="@dimen/info_textsize"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/progress_title"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
@@ -72,7 +104,7 @@
         android:text="@string/height_info"
         android:textAlignment="center"
         android:textSize="@dimen/info_textsize"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/progress_title"
         app:layout_constraintTop_toBottomOf="@+id/weight_info" />
 
     <TextView
@@ -85,19 +117,20 @@
         android:textAlignment="center"
         android:textSize="@dimen/info_textsize"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="@+id/progress_title"
         app:layout_constraintTop_toBottomOf="@+id/height_info" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/progress_title"
         android:layout_width="@dimen/title_width"
         android:layout_height="@dimen/info_height"
         android:background="@color/text_background"
         android:gravity="center"
         android:text="@string/food_list_title"
-        android:textSize="@dimen/label_textsize"
-        app:layout_constraintBottom_toTopOf="@+id/food_list"
+        android:textSize="@dimen/info_textsize"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent" />
 
 

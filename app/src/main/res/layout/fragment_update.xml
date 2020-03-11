@@ -105,19 +105,21 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="@dimen/spinner_height"
+        android:id="@+id/height_spinner"
+        android:layout_width="@dimen/std_width"
         android:layout_height="@dimen/spinner_width"
-        android:entries="@array/weight_units"
+        android:entries="@array/height_units"
+        android:gravity="center"
         android:spinnerMode="dropdown"
         app:layout_constraintStart_toEndOf="@+id/height"
         app:layout_constraintTop_toTopOf="@+id/height" />
 
     <Spinner
-        android:id="@+id/spinner2"
-        android:layout_width="@dimen/spinner_height"
+        android:id="@+id/weight_spinner"
+        android:layout_width="@dimen/std_width"
         android:layout_height="@dimen/spinner_width"
         android:entries="@array/weight_units"
+        android:gravity="center"
         android:spinnerMode="dropdown"
         app:layout_constraintStart_toEndOf="@+id/weight"
         app:layout_constraintTop_toTopOf="@+id/weight" />

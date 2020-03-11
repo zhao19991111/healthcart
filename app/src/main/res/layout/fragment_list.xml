@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/frameLayout3"
+    android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".List">
 
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/summary_list"
         android:layout_width="@dimen/summary_list_width"
         android:layout_height="@dimen/summary_list_height"
         android:background="@android:color/holo_blue_light"
@@ -17,6 +17,321 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow
+                android:id="@+id/table_title"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/column_title0"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="@string/col_title0"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/column_title1"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:text="@string/col_title1"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/column_title2"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_orange_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row0"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name0"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal0"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn0"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name1"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal1"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn1"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name2"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal2"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn2"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name3"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal3"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn3"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row4"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name4"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal4"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn4"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row5"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name5"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal5"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn5"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row6"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name6"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal6"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn6"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row7"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name7"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal7"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn7"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row8"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/item_name8"
+                    android:layout_width="@dimen/item_name_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/item_cal8"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+
+                <Button
+                    android:id="@+id/expand_btn8"
+                    android:layout_width="@dimen/btn_height"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@drawable/ic_ballot_24px"
+                    android:textSize="@dimen/btn_textsize" />
+
+            </TableRow>
+        </TableLayout>
     </ScrollView>
 
     <Button
@@ -26,8 +341,8 @@
         android:text="@string/reselect_btn"
         android:textSize="@dimen/btn_textsize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintStart_toStartOf="@+id/summary_list"
+        app:layout_constraintTop_toBottomOf="@+id/summary_list" />
 
     <Button
         android:id="@+id/finish"
@@ -36,19 +351,147 @@
         android:text="@string/finish_btn"
         android:textSize="@dimen/btn_textsize"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
+        app:layout_constraintEnd_toEndOf="@+id/summary_list"
+        app:layout_constraintTop_toBottomOf="@+id/summary_list" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/info_title"
         android:layout_width="@dimen/title_width"
         android:layout_height="@dimen/info_height"
         android:background="@color/text_background"
         android:gravity="center"
         android:text="@string/summary_title"
         android:textSize="@dimen/label_textsize"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="@+id/scrollView2"
-        app:layout_constraintStart_toStartOf="@+id/scrollView2"
+        app:layout_constraintBottom_toTopOf="@+id/summary_list"
+        app:layout_constraintEnd_toEndOf="@+id/summary_list"
+        app:layout_constraintStart_toStartOf="@+id/summary_list"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/detail_list"
+        android:layout_width="@dimen/summary_list_width"
+        android:layout_height="wrap_content"
+        android:background="@android:color/darker_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            tools:visibility="visible">
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="@dimen/summary_list_width"
+                android:layout_height="@dimen/btn_height"
+                android:background="@android:color/holo_orange_light"
+                android:gravity="center"
+                android:text="@string/detail_title"
+                android:textSize="@dimen/info_textsize" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/cal_row"
+                    android:layout_width="@dimen/detail_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:text="@string/calories_str"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/cal_detail_val"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/fats_row"
+                    android:layout_width="@dimen/detail_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:text="@string/fats_str"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/fats_detail_val"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/protein_row"
+                    android:layout_width="@dimen/detail_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:text="@string/protein_str"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/protein_detail_val"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/carb_row"
+                    android:layout_width="@dimen/detail_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:gravity="center"
+                    android:text="@string/carb_str"
+                    android:textSize="@dimen/info_textsize" />
+
+                <TextView
+                    android:id="@+id/carb_detail_val"
+                    android:layout_width="@dimen/calorie_value_width"
+                    android:layout_height="@dimen/btn_height"
+                    android:background="@android:color/holo_green_light"
+                    android:gravity="center"
+                    android:textSize="@dimen/info_textsize" />
+            </TableRow>
+
+            <Button
+                android:id="@+id/return_list_btn"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/btn_height"
+                android:text="@string/return_str"
+                android:textSize="@dimen/btn_textsize" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

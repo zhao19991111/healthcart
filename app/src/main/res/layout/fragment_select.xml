@@ -103,6 +103,7 @@
                         android:id="@+id/food_name0"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 
@@ -131,6 +132,7 @@
                         android:id="@+id/food_name1"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 
@@ -160,6 +162,7 @@
                         android:id="@+id/food_name2"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 
@@ -188,6 +191,7 @@
                         android:id="@+id/food_name3"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 
@@ -216,6 +220,7 @@
                         android:id="@+id/food_name4"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 
@@ -244,6 +249,7 @@
                         android:id="@+id/food_name5"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 
@@ -273,6 +279,7 @@
                         android:id="@+id/food_name6"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 
@@ -302,6 +309,7 @@
                         android:id="@+id/food_name7"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 
@@ -331,6 +339,7 @@
                         android:id="@+id/food_name8"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
+                        android:gravity="center"
                         android:textSize="@dimen/info_textsize" />
                 </HorizontalScrollView>
 

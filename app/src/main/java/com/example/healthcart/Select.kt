@@ -27,8 +27,8 @@ import kotlinx.android.synthetic.main.fragment_select.*
  */
 class Select : Fragment() {
 
-    private val food_list = arrayListOf<String> ()
-    private val data_list = arrayListOf<ArrayList<String>> ()
+    private var food_list = arrayListOf<String> ()
+    private var data_list = arrayListOf<ArrayList<String>> ()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,7 +36,6 @@ class Select : Fragment() {
     ): View? {
         super.onCreate(savedInstanceState)
         // Inflate the layout for this fragment
-        val bundle = Bundle()
         val view = inflater.inflate(R.layout.fragment_select, container, false)
         // Navigation of buttons
         val recordBtn = view.findViewById<Button>(R.id.record)
@@ -116,11 +115,14 @@ class Select : Fragment() {
                                         recordBtn.visibility = View.INVISIBLE
                                         processValue(value)
                                         if (food_list.size > 9) // too many items selected
+                                        {
                                             Toast.makeText(
                                                 getActivity(),
                                                 "Please choose less than 9 items",
                                                 Toast.LENGTH_LONG
                                             ).show()
+                                            recordBtn.visibility = View.VISIBLE
+                                        }
                                         else {
                                             popupBox.visibility = View.VISIBLE
                                             entry_list.forEachIndexed { index, element ->
@@ -133,10 +135,10 @@ class Select : Fragment() {
                                             }
                                             confirmBtn.setOnClickListener {
                                                 run {
-                                                    saveStrListToDB(food_list, "food_list")
-                                                    saveStrList2ToDB(data_list, "data_list")
+                                                    saveStrToDB("new_food_list", arrayToString(food_list))
+                                                    saveStrToDB("new_data_list", array2ToString(data_list))
                                                     findNavController().navigate(
-                                                        SelectDirections.actionSelectToList(
+                                                            SelectDirections.actionSelectToList(
                                                             arrayToString(food_list),
                                                             array2ToString(data_list)
                                                         )
@@ -155,26 +157,21 @@ class Select : Fragment() {
                                                         .setOnClickListener {
                                                             view.findViewById<TableRow>(row_list[ind])
                                                                 .visibility = View.GONE
-                                                            val temp_food_list =
+                                                            var temp_food_list =
                                                                 arrayListOf<String>()
-                                                            val temp_data_list =
+                                                            var temp_data_list =
                                                                 arrayListOf<ArrayList<String>>()
                                                             food_list.forEachIndexed { i, e ->
                                                                 run {
                                                                     if (i != ind) {
-                                                                        temp_food_list.add(food_list[i])
+                                                                        temp_food_list.add(e)
                                                                         temp_data_list.add(data_list[i])
+                                                                        Log.e("val:", e)
                                                                     }
                                                                 }
                                                             }
-                                                            Collections.copy(
-                                                                food_list,
-                                                                temp_food_list
-                                                            )
-                                                            Collections.copy(
-                                                                data_list,
-                                                                temp_data_list
-                                                            )
+                                                            food_list = temp_food_list
+                                                            data_list = temp_data_list
                                                         }
 
                                                 }
@@ -195,12 +192,12 @@ class Select : Fragment() {
         food_list.clear()
         data_list.clear()
         val pre_list: kotlin.collections.List<String> = value.replace("[", "").replace("&amp;", "&")
-            .replace("]", "").split("\",\"").map{it.trim()}
+            .replace("]", "").split("\",\"").map{it.replace("\"","").replace("NaN", "0").trim()}
         val summary_list = arrayListOf<String>()
         pre_list.forEach {
             ele -> run {
               if (ele != "," && ele != "")
-                  summary_list.add(ele.replace("\""," ").trim())
+                  summary_list.add(ele.replace("\\\"","\"").trim())
             }
         }
         for (i in 0..(summary_list.size / 7))
@@ -224,24 +221,11 @@ class Select : Fragment() {
         }
     }
 
-    private fun saveStrListToDB(arrList: ArrayList<String>, key: String): Unit
+    private fun saveStrToDB(key: String, str: String): Unit
     {
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        val gson = Gson()
-        val json = gson.toJson(arrList)
         with (sharedPref.edit()) {
-            putString(key, json)
-            commit()
-        }
-    }
-
-    private fun saveStrList2ToDB(arrList: ArrayList<ArrayList<String>>, key: String): Unit
-    {
-        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
-        val gson = Gson()
-        val json = gson.toJson(arrList)
-        with (sharedPref.edit()) {
-            putString(key, json)
+            putString(key, str)
             commit()
         }
     }
