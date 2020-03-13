@@ -78,46 +78,47 @@
         android:layout_width="@dimen/avatar_width"
         android:layout_height="@dimen/avatar_height"
         android:layout_marginTop="20dp"
-        android:background="@android:color/holo_blue_light"
+        android:background="@mipmap/ic_launcher_foreground"
+        app:layout_constraintEnd_toStartOf="@+id/height_info"
         app:layout_constraintStart_toStartOf="@+id/progress_title"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/avatars[1]" />
+        tools:src="@mipmap/ic_launcher_foreground" />
 
     <TextView
         android:id="@+id/weight_info"
         android:layout_width="@dimen/inputbox_width"
         android:layout_height="@dimen/info_height"
-        android:background="@color/text_background"
+        android:background="@android:color/holo_orange_light"
         android:gravity="center"
         android:text="@string/weight_info"
         android:textAlignment="center"
         android:textSize="@dimen/info_textsize"
-        app:layout_constraintEnd_toEndOf="@+id/progress_title"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/height_info"
         android:layout_width="@dimen/info_width"
         android:layout_height="@dimen/info_height"
-        android:background="@color/text_background"
+        android:background="@android:color/holo_orange_light"
         android:gravity="center"
         android:text="@string/height_info"
         android:textAlignment="center"
         android:textSize="@dimen/info_textsize"
-        app:layout_constraintEnd_toEndOf="@+id/progress_title"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/weight_info" />
 
     <TextView
         android:id="@+id/age_info"
         android:layout_width="@dimen/info_width"
         android:layout_height="@dimen/info_height"
-        android:background="@color/text_background"
+        android:background="@android:color/holo_orange_light"
         android:gravity="center"
         android:text="@string/age_info"
         android:textAlignment="center"
         android:textSize="@dimen/info_textsize"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toEndOf="@+id/progress_title"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/height_info" />
 
     <TextView
@@ -161,7 +162,6 @@
         android:layout_height="@dimen/sub_info_height"
         android:background="@color/text_background"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="@+id/progress_title"
         app:layout_constraintStart_toStartOf="@+id/progress_title"
         app:layout_constraintTop_toBottomOf="@+id/protein_title" />
