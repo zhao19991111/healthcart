@@ -122,25 +122,87 @@ class Home : Fragment() {
             }
         }
         var total_cal = 0
-        var desired_cal = 3000
+        var total_carb = 0.0
+        var total_protein = 0.0
+        var total_fats = 0.0
         data_list.forEachIndexed{
-                ind, ele -> total_cal += data_list[ind][0].toInt()
+                ind, ele ->
+            run {
+                total_cal += data_list[ind][0].toInt()
+                total_protein += data_list[ind][3].replace("g", "").trim().toDouble()
+                total_carb += data_list[ind][1].replace("g", "").trim().toDouble()
+                total_fats += data_list[ind][2].replace("g", "").trim().toDouble()
+            }
         }
-        val title_str = "Remaining Calories: "
-        val calorie_str = (desired_cal - total_cal).toString()
+
+        val title_str = "Calories: "
+        val carb_title_str = "Carbohydrates: "
+        val protein_title_str = "Proteins: "
+        val fats_title_str = "Fats: "
+
+        val calorie_str = String.format("%d", total_cal)
+        val carb_str =  String.format("%.1f", total_carb)
+        val protein_str = String.format("%.1f", total_protein)
+        val fats_str = String.format("%.1f", total_fats)
+
         val title = view.findViewById<TextView>(R.id.progress_title)
-        val desired_cal_str = (bmr * 1.6).toString()
+        val carb_title = view.findViewById<TextView>(R.id.carb_title)
+        val protein_title = view.findViewById<TextView>(R.id.protein_title)
+        val fats_title = view.findViewById<TextView>(R.id.fats_title)
+
+        val desired_cal = bmr * 1.6
+        val desired_protein = 0.86 * 1.4 * 2.205 * weight_val
+        val desired_fats = bmr * 1.6 * 0.2 / 9
+        val desired_carb = (bmr * 1.6 - desired_fats * 9 - desired_protein * 4) / 4
+
+        val desired_cal_str = String.format("%.1f", desired_cal)
+        val desired_fats_str = String.format("%.1f", desired_fats)
+        val desired_protein_str = String.format("%.1f", desired_protein)
+        val desired_carb_str = String.format("%.1f", desired_carb)
+
+
         title.setText(title_str + calorie_str + "/" + desired_cal_str, TextView.BufferType.SPANNABLE )
-        val s = title.getText() as Spannable
+        val s1 = title.getText() as Spannable
         val start1 = title_str.length
         val end1 = start1 + calorie_str.length
         val start2 = end1 + 1
         val end2 = start2 + desired_cal_str.length
-        s.setSpan(ForegroundColorSpan(-0x10000), start1, end1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        s.setSpan(StyleSpan(Typeface.BOLD), start1, end1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        s.setSpan(ForegroundColorSpan(-0x10000), start2, end2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
-        s.setSpan(StyleSpan(Typeface.BOLD), start2, end2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s1.setSpan(ForegroundColorSpan(-0x10000), start1, end1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s1.setSpan(StyleSpan(Typeface.BOLD), start1, end1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s1.setSpan(ForegroundColorSpan(-0x10000), start2, end2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s1.setSpan(StyleSpan(Typeface.BOLD), start2, end2, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         title.setOnClickListener(navigateToDetail)
+
+        carb_title.setText( carb_title_str + carb_str + "/" + desired_carb_str + " g", TextView.BufferType.SPANNABLE )
+        val s2 = carb_title.getText() as Spannable
+        val start3 = carb_title_str.length
+        val end3 = start3 + carb_str.length
+        val start4 = end3 + 1
+        val end4 = start4 + desired_carb_str.length
+        s2.setSpan(ForegroundColorSpan(-0x10000), start3, end3, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s2.setSpan(ForegroundColorSpan(-0x10000), start4, end4, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        carb_title.setOnClickListener(navigateToDetail)
+
+        protein_title.setText( protein_title_str + protein_str + "/" + desired_protein_str + " g", TextView.BufferType.SPANNABLE )
+        val s3 = protein_title.getText() as Spannable
+        val start5 = protein_title_str.length
+        val end5 = start5 + protein_str.length
+        val start6 = end5 + 1
+        val end6 = start6 + desired_protein_str.length
+        s3.setSpan(ForegroundColorSpan(-0x10000), start5, end5, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s3.setSpan(ForegroundColorSpan(-0x10000), start6, end6, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        protein_title.setOnClickListener(navigateToDetail)
+
+        fats_title.setText( fats_title_str + fats_str + "/" + desired_fats_str + " g", TextView.BufferType.SPANNABLE )
+        val s4 = fats_title.getText() as Spannable
+        val start7 = fats_title_str.length
+        val end7 = start7 + fats_str.length
+        val start8 = end7 + 1
+        val end8 = start8 + desired_fats_str.length
+        s4.setSpan(ForegroundColorSpan(-0x10000), start7, end7, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        s4.setSpan(ForegroundColorSpan(-0x10000), start8, end8, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+        carb_title.setOnClickListener(navigateToDetail)
+
         return view
     }
 

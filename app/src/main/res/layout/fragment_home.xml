@@ -38,7 +38,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView">
+        app:layout_constraintTop_toBottomOf="@+id/progress_title">
 
         <TableLayout
             android:id="@+id/_food_list"
@@ -128,10 +128,43 @@
         android:gravity="center"
         android:text="@string/food_list_title"
         android:textSize="@dimen/info_textsize"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/age_info" />
+
+    <TextView
+        android:id="@+id/protein_title"
+        android:layout_width="@dimen/title_width"
+        android:layout_height="@dimen/sub_info_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/fats_title"
+        app:layout_constraintEnd_toEndOf="@+id/progress_title"
+        app:layout_constraintStart_toStartOf="@+id/progress_title"
+        app:layout_constraintTop_toBottomOf="@+id/carb_title" />
+
+    <TextView
+        android:id="@+id/carb_title"
+        android:layout_width="@dimen/title_width"
+        android:layout_height="@dimen/sub_info_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/protein_title"
+        app:layout_constraintEnd_toEndOf="@+id/progress_title"
+        app:layout_constraintStart_toStartOf="@+id/progress_title"
+        app:layout_constraintTop_toBottomOf="@+id/progress_title" />
+
+    <TextView
+        android:id="@+id/fats_title"
+        android:layout_width="@dimen/title_width"
+        android:layout_height="@dimen/sub_info_height"
+        android:background="@color/text_background"
+        android:gravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="@+id/progress_title"
+        app:layout_constraintStart_toStartOf="@+id/progress_title"
+        app:layout_constraintTop_toBottomOf="@+id/protein_title" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
