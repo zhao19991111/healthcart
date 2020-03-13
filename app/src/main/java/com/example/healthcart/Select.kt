@@ -279,6 +279,4 @@ class Select : Fragment() {
         return finalArr
     }
 
-
-
 }

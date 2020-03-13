@@ -53,18 +53,28 @@ class Home : Fragment() {
         val weight_str = getStrFromDB("weight")
         val height_str = getStrFromDB("height")
         val age_str = getStrFromDB ("age")
+        val height_unit = getStrFromDB("height_unit")
+        val weight_unit = getStrFromDB("weight_unit")
         Log.e("weight", weight_str)
         if (weight_str != "NONE" && height_str != "NONE" && age_str != "NONE")
         {
             val weight = weight_str.toDouble()
             val height = height_str.toDouble()
             val age = age_str.toInt()
-            val height_unit = getStrFromDB("weight_unit")
-            val weight_unit = getStrFromDB("height_unit")
+
             weightText.text = String.format("Weight: %.1f %s" , weight, weight_unit)
             heightText.text = String.format("Height: %.1f %s" , height, height_unit)
             ageText.text = String.format("Age: %d" , age)
         }
+        var weight_val = weight_str.toDouble()
+        var height_val = height_str.toDouble()
+        if (weight_unit == "lbs") {
+            weight_val *= 0.4536
+        }
+        if (height_unit == "in") {
+            height_val *= 2.54
+        }
+        val bmr = 10*weight_val + 6.25*height_val - 5*age_str.toInt() + 5
         val table_layout = view.findViewById<TableLayout>(R.id._food_list)
         if (food_list.size == 0 || data_list.size == 0)
         {
@@ -118,8 +128,8 @@ class Home : Fragment() {
         }
         val title_str = "Remaining Calories: "
         val calorie_str = (desired_cal - total_cal).toString()
-        val desired_cal_str = desired_cal.toString()
         val title = view.findViewById<TextView>(R.id.progress_title)
+        val desired_cal_str = (bmr * 1.6).toString()
         title.setText(title_str + calorie_str + "/" + desired_cal_str, TextView.BufferType.SPANNABLE )
         val s = title.getText() as Spannable
         val start1 = title_str.length
